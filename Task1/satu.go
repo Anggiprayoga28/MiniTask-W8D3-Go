@@ -96,7 +96,7 @@ func SimulateWorkerLife(workers []Worker) {
 		done <- true
 	}()
 	
-	<-done
+	 <-done
 
 	
 	wg.Wait()
