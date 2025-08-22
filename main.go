@@ -6,55 +6,57 @@ import (
 	"sync"
 	"time"
 
+	"github.com/Anggiprayoga28/Task1"
+	"github.com/Anggiprayoga28/Task2"
 	"github.com/Anggiprayoga28/Task3"
 )
 
 func main() {
-//Nomor 1
-	// rand.Seed(time.Now().UnixNano())
+// Nomor 1
+	rand.Seed(time.Now().UnixNano())
 	
-	// fmt.Println("SIMULASI KEHIDUPAN PEKERJA KANTORAN")
+	fmt.Println("SIMULASI KEHIDUPAN PEKERJA KANTORAN")
 	
-	// workers := []Task1.Worker{
-	// 	{Name: "Sidik", ID: 1},
-	// 	{Name: "Bobi", ID: 2},
-	// 	{Name: "Alex", ID: 3},
-	// }
+	workers := []Task1.Worker{
+		{Name: "Sidik", ID: 1},
+		{Name: "Bobi", ID: 2},
+		{Name: "Alex", ID: 3},
+	}
 	
-	// Task1.SimulateWorkerLife(workers)
+	Task1.SimulateWorkerLife(workers)
 	
 	
-	// fmt.Println("\nProgram selesai!")
+	fmt.Println("\nProgram selesai!")
 
 
-//Nomor 2
+// Nomor 2
 
-	// channelPesan := make(chan Task2.Message, 5)
-	// channelSelesai := make(chan bool)
+	channelPesan := make(chan Task2.Message, 5)
+	channelSelesai := make(chan bool)
 	
-	// fmt.Println("PAPAN TULIS VIRTUAL KELUARGA")
-	// go Task2.PapanTulis(channelPesan, channelSelesai)
-	// time.Sleep(500 * time.Millisecond)
-	// Task2.KirimBanyakPesan(channelPesan)
+	fmt.Println("PAPAN TULIS VIRTUAL KELUARGA")
+	go Task2.PapanTulis(channelPesan, channelSelesai)
+	time.Sleep(500 * time.Millisecond)
+	Task2.KirimBanyakPesan(channelPesan)
 	
 	
-	// fmt.Println("\nPesan tambahan:")
-	// Task2.KirimPesan(channelPesan, "Nenek", "Kapan main ke rumah nenek?")
-	// time.Sleep(1 * time.Second)
+	fmt.Println("\nPesan tambahan:")
+	Task2.KirimPesan(channelPesan, "Nenek", "Kapan main ke rumah nenek?")
+	time.Sleep(1 * time.Second)
 	
-	// Task2.KirimPesan(channelPesan, "Kakek", "Jangan lupa siram tanaman")
-	// time.Sleep(1 * time.Second)
+	Task2.KirimPesan(channelPesan, "Kakek", "Jangan lupa siram tanaman")
+	time.Sleep(1 * time.Second)
 	
-	// time.Sleep(2 * time.Second)
+	time.Sleep(2 * time.Second)
 	
-	// fmt.Println("\nMenutup papan tulis...")
-	// close(channelPesan)
+	fmt.Println("\nMenutup papan tulis...")
+	close(channelPesan)
 	
-	// <-channelSelesai
+	<-channelSelesai
 	
-	// fmt.Println("Program selesai!")
+	fmt.Println("Program selesai!")
 
-
+//Nomor 3
 	fmt.Println("=== Simulasi Berbagi Microwave di Kontrakan ===")
 	fmt.Println()
 
